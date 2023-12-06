@@ -1,4 +1,4 @@
-export default function () {
+const utility = function () {
   this.Logger = (data) => {
     var date = new Date();
     data = date.toLocaleString() + ": " + data + "\n";
@@ -12,4 +12,6 @@ export default function () {
     var url = request.protocol + "://" + request.get("host") + request.url;
     return url;
   };
-}
+};
+
+module.exports = { utility };

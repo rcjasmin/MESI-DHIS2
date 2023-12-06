@@ -1,6 +1,24 @@
-const cron = require("node-cron");
-cron.schedule("*/5 * * * * *", function () {
-  /*
+const config = require("./app.conf");
+const axios = require("axios");
+const helper = require("./utility");
+
+const url_mesi_sites = config.SERVERS.MESI_SERVER + config.RESOURCES.MESI_SITES;
+axios
+  .get(url_mesi_sites)
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    helper.helper.utility.Logger(
+      "Date : " + new Date() + "Message: " + error.message
+    );
+    console.log("Exception Message : " + error);
+  });
+
+//const cron = require("node-cron");
+//cron.schedule("*/5 * * * * *", function () {
+
+/*
   router.get('/api/pos/pari/:entreprise/:banque/:utilisateur/:tirage/:androidid/:pari/:montant/:devise', (request, response) => {
     var data = {"ENTREPRISE_ID":request.params.entreprise, "UTILISATEUR_ID":request.params.utilisateur,   "BANQUE_ID":request.params.banque,
       "TIRAGE_ID":request.params.tirage,"NOMBRE_PARI": request.params.pari, "MONTANT_TOTAL": request.params.montant,
@@ -19,5 +37,5 @@ cron.schedule("*/5 * * * * *", function () {
     });
   });
     */
-  console.log("running a task every minute");
-});
+//console.log("running a task every minute");
+//});
