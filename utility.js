@@ -1,17 +1,27 @@
-const utility = function () {
-  this.Logger = (data) => {
-    var date = new Date();
-    data = date.toLocaleString() + ": " + data + "\n";
-    const fs = require("fs");
-    fs.appendFile("log.txt", data, function (err) {
-      if (err) throw error;
-    });
-  };
-
-  this.CurrentURL = (request) => {
-    var url = request.protocol + "://" + request.get("host") + request.url;
-    return url;
-  };
+const fs = require("fs");
+const Logger = function (data) {
+  var date = new Date();
+  data = date.toLocaleString() + ": " + data + "\n";
+  fs.appendFile("log.txt", data, function (err) {
+    if (err) throw error;
+  });
 };
 
-module.exports = { utility };
+const removeNewlinesFromJSON = function removeNewlinesFromJSON(jsonString) {
+  try {
+    const jsonObj = JSON.parse(jsonString);
+
+    for (let key in jsonObj) {
+      if (typeof jsonObj[key] === "string") {
+        jsonObj[key] = jsonObj[key].replace(/\n\n/g, "");
+        jsonObj[key] = jsonObj[key].replace(/\n/g, "");
+      }
+    }
+    return JSON.stringify(jsonObj);
+  } catch (error) {
+    console.error("Invalid JSON string provided:", error);
+    return null; // or return jsonString to return original string in case of error
+  }
+};
+
+module.exports = { Logger, removeNewlinesFromJSON };

@@ -1,19 +1,17 @@
+const service = require("./apiServices");
 const config = require("./app.conf");
-const axios = require("axios");
-const helper = require("./utility");
-
 const url_mesi_sites = config.SERVERS.MESI_SERVER + config.RESOURCES.MESI_SITES;
-axios
-  .get(url_mesi_sites)
-  .then((response) => {
-    console.log(response.data);
-  })
-  .catch((error) => {
-    helper.helper.utility.Logger(
-      "Date : " + new Date() + "Message: " + error.message
-    );
-    console.log("Exception Message : " + error);
-  });
+const url_mesi_indicateurs =
+  config.SERVERS.MESI_SERVER + config.RESOURCES.MESI_INDICATEURS;
+
+service.InsertUpdateVariables(url_mesi_sites, "mesi_crud_site", "Sites");
+service.InsertUpdateVariables(
+  url_mesi_indicateurs,
+  "mesi_crud_indicateur",
+  "Indicateurs"
+);
+service.InsertUpdateOrgUnit();
+service.InsertUpdateDataElem();
 
 //const cron = require("node-cron");
 //cron.schedule("*/5 * * * * *", function () {

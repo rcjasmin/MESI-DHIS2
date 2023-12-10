@@ -6,8 +6,13 @@ const SERVERS = {
 const RESOURCES = {
   MESI_SITES: "/MesiExchangeAPI/api/DataExtraction/GetSite",
   MESI_INDICATEURS: "/MesiExchangeAPI/api/DataExtraction/GetIndicateur",
-  DHIS2_ORGANISATION_UNITS: "/dhis/api/organisationUnits",
-  DHIS2_DATA_ELEMENTS: "/dhis/api/dataElements",
+  DHIS2_ORGANISATION_UNITS: "/dhis/api/organisationUnits/?paging=false",
+  DHIS2_DATA_ELEMENTS: "/dhis/api/dataElements/?paging=false",
+};
+
+const DHIS2_CREDENTIALS = {
+  USER: "admin",
+  PASSWORD: "Victoire2020!",
 };
 
 const DATABASES = {
@@ -18,4 +23,4 @@ const DATABASES = {
   DBNAME: "delr_xchange",
 };
 
-module.exports = { SERVERS, RESOURCES, DATABASES };
+module.exports = { SERVERS, RESOURCES, DATABASES, DHIS2_CREDENTIALS };
