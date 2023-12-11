@@ -9049,3 +9049,8 @@
 12/10/2023, 2:23:43 PM: ER_DUP_ENTRY: Duplicate entry '0' for key 'dhis2_data_element.IdMesi'
 12/10/2023, 2:23:43 PM: ER_DUP_ENTRY: Duplicate entry '0' for key 'dhis2_data_element.IdMesi'
 12/10/2023, 2:25:35 PM: Date : Sun Dec 10 2023 14:25:35 GMT-0500 (Eastern Standard Time)Message: Total Data Elements processed : 758
+12/10/2023, 6:39:25 PM: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+12/10/2023, 6:41:13 PM: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+12/10/2023, 6:41:26 PM: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+12/10/2023, 6:43:37 PM: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ACTIVE' at line 1
+12/10/2023, 6:44:33 PM: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ACTIVE' at line 1
