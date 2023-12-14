@@ -17,9 +17,36 @@ router.get("/api/organisationUnits", (request, response) => {
   });
 });
 
+router.get("/api/dataElements", (request, response) => {
+  const query =
+    "SELECT Id,Nom,Statut FROM dhis2_data_element WHERE Statut ='ACTIF'";
+
+  db.query(query, function (error, results) {
+    if (error) {
+      helper.Logger(error.message);
+      console.log(error.message);
+      return;
+    }
+    response.status(200).send(results);
+  });
+});
+
 router.get("/api/mapping/site", (request, response) => {
   const query =
     "SELECT a.Id AS MESI_ID,a.Nom AS MESI_NOM, b.IdDHIS2 AS DHIS2_ID, c.Nom AS DHIS2_NOM FROM mesi_site a  LEFT JOIN mapping_site b ON a.Id = b.IdMesi LEFT JOIN dhis2_organisation_unit c ON b.IdDHIS2 =c.Id WHERE a.Statut = 'ACTIF' ";
+  db.query(query, function (error, results) {
+    if (error) {
+      helper.Logger(error.message);
+      console.log(error.message);
+      return;
+    }
+    response.status(200).send(results);
+  });
+});
+
+router.get("/api/mapping/indicateur", (request, response) => {
+  const query =
+    "SELECT a.Id AS MESI_ID,a.NomIndicateur AS MESI_NOM, b.IdDHIS2 AS DHIS2_ID, c.Nom AS DHIS2_NOM FROM mesi_indicateur a  LEFT JOIN mapping_indicateur b ON a.Id = b.IdMesi LEFT JOIN dhis2_data_element c ON b.IdDHIS2 =c.Id WHERE a.Statut = 'ACTIF'";
   db.query(query, function (error, results) {
     if (error) {
       helper.Logger(error.message);
