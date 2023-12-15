@@ -19,7 +19,7 @@ router.get("/api/organisationUnits", (request, response) => {
 
 router.get("/api/mapping/site", (request, response) => {
   const query =
-    "SELECT a.Id AS MESI_ID,a.Nom AS MESI_NOM, b.IdDHIS2 AS DHIS2_ID, c.Nom AS DHIS2_NOM FROM mesi_site a  LEFT JOIN mapping_site b ON a.Id = b.IdMesi LEFT JOIN dhis2_organisation_unit c ON b.IdDHIS2 =c.Id WHERE a.Statut = 'ACTIF' ";
+    "SELECT a.Id AS MESI_ID,a.Nom AS MESI_NOM, IFNULL(b.IdDHIS2,0) AS DHIS2_ID, IFNULL(c.Nom,'') AS DHIS2_NOM  FROM mesi_site a  LEFT JOIN mapping_site b ON a.Id = b.IdMesi LEFT JOIN dhis2_organisation_unit c ON b.IdDHIS2 =c.Id WHERE a.Statut = 'ACTIF' ";
   db.query(query, function (error, results) {
     if (error) {
       helper.Logger(error.message);
