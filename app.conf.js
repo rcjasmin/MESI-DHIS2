@@ -8,6 +8,10 @@ const RESOURCES = {
   MESI_INDICATEURS: "/MesiExchangeAPI/api/DataExtraction/GetIndicateur",
   DHIS2_ORGANISATION_UNITS: "/dhis/api/organisationUnits/?paging=false",
   DHIS2_DATA_ELEMENTS: "/dhis/api/dataElements/?paging=false",
+  DHIS2_GET_DATASET_ID: "/api/dataSet",
+  DHIS2_GET_DATASET_ELEMENTS: "/dhis/api/dataSets",
+  DHIS2_GET_CATEGORY_OPTION_COMBO:
+    "/dhis/api/categoryOptionCombos/?paging=false",
 };
 
 const DHIS2_CREDENTIALS = {
