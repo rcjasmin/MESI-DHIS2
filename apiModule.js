@@ -154,7 +154,30 @@ router.post("/api/utilisateurs", (request, response) => {
     "','" +
     userId +
     "','create') AS RESULT";
-  console.log(query);
+  //console.log(query);
+  db.query(query, function (error, results) {
+    if (error) {
+      helper.Logger(error.message);
+      console.log(error.message);
+      return;
+    }
+    results = results[0].RESULT;
+    results = JSON.parse(results);
+    response.status(200).send(results);
+  });
+});
+
+router.put("/api/utilisateurs", (request, response) => {
+  const userData = request.body.data;
+  const userId = request.body.userId;
+
+  const query =
+    "SELECT webapp_crud_utilisateur('" +
+    JSON.stringify(userData) +
+    "','" +
+    userId +
+    "','update') AS RESULT";
+  //console.log(query);
   db.query(query, function (error, results) {
     if (error) {
       helper.Logger(error.message);
